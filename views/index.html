@@ -7,14 +7,13 @@
   <body>
     <div>press f12 and watch network tab</div>
     <script>
-      const webSocket = new WebSocket("ws://localhost:8005");
-      webSocket.onopen = () => {
-        console.log("websocket connected");
-      };
-      webSocket.onmessage = (event) => {
-        console.log(event.data);
-        webSocket.send("message from client");
-      };
+      const socket = io.connect("http://localhost:8005", {
+        path: "/socket.io",
+      });
+      socket.on("news", (data) => {
+        console.log(data);
+        socket.emit("reply", "Hello Node.JS");
+      });
     </script>
   </body>
 </html>
