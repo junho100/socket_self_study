@@ -27,7 +27,7 @@ mongoose.connection.on("error", (error) => {
   console.error("mongodb connection error", error);
 });
 mongoose.connection.on("disconnected", () => {
-  console.error("mongodb disconnected. trying to connect again....");
+  console.error("mongodb disconnected. trying to connect again...");
   connect();
 });
 
